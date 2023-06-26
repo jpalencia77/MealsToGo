@@ -24,6 +24,7 @@ export const Search = () => {
                 onChangeText={(text) => {
                     setSearchKeyword(text);
                 }}
+                mode="bar"
             />
         </SearchContainer>
     );
