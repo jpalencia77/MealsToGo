@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import { StatusBar, SafeAreaView } from "react-native";
 import styled from "styled-components/native";
 

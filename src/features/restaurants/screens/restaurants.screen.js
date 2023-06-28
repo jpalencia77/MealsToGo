@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import React, { useContext } from "react";
 import { FlatList, TouchableOpacity } from "react-native";
 import styled from "styled-components/native";

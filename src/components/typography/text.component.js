@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import styled from "styled-components/native";
 
 const defaultTextStyles = (theme) => `
@@ -34,11 +33,11 @@ const label = (theme) => `
 `;
 
 const variants = {
-    body,
-    label,
-    caption,
-    error,
-    hint,
+  body,
+  label,
+  caption,
+  error,
+  hint,
 };
 
 export const Text = styled.Text`
@@ -47,5 +46,5 @@ export const Text = styled.Text`
 `;
 
 Text.defaultProps = {
-    variant: "body",
+  variant: "body",
 };

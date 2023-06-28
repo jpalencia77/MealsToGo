@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import styled from "styled-components/native";
 import { Card } from "react-native-paper";
 
