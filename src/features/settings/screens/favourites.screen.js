@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import React, { useContext } from "react";
 import styled from "styled-components/native";
 import { TouchableOpacity } from "react-native";
@@ -17,33 +16,33 @@ const NoFavouritesArea = styled(SafeArea)`
   justify-content: center;
 `;
 export const FavouritesScreen = ({ navigation }) => {
-    const { favourites } = useContext(FavouritesContext);
+  const { favourites } = useContext(FavouritesContext);
 
-    return favourites.length ? (
-        <SafeArea>
-            <RestaurantList
-                data={favourites}
-                renderItem={({ item }) => {
-                    return (
-                        <TouchableOpacity
-                            onPress={() =>
-                                navigation.navigate("RestaurantDetail", {
-                                    restaurant: item,
-                                })
-                            }
-                        >
-                            <Spacer position="bottom" size="large">
-                                <RestaurantInfoCard restaurant={item} />
-                            </Spacer>
-                        </TouchableOpacity>
-                    );
-                }}
-                keyExtractor={(item) => item.name}
-            />
-        </SafeArea>
-    ) : (
-        <NoFavouritesArea>
-            <Text center>No favourites yet</Text>
-        </NoFavouritesArea>
-    );
+  return favourites.length ? (
+    <SafeArea>
+      <RestaurantList
+        data={favourites}
+        renderItem={({ item }) => {
+          return (
+            <TouchableOpacity
+              onPress={() =>
+                navigation.navigate("RestaurantDetail", {
+                  restaurant: item,
+                })
+              }
+            >
+              <Spacer position="bottom" size="large">
+                <RestaurantInfoCard restaurant={item} />
+              </Spacer>
+            </TouchableOpacity>
+          );
+        }}
+        keyExtractor={(item) => item.name}
+      />
+    </SafeArea>
+  ) : (
+    <NoFavouritesArea>
+      <Text center>No favourites yet</Text>
+    </NoFavouritesArea>
+  );
 };

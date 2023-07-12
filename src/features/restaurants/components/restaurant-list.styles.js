@@ -1,9 +1,8 @@
-/* eslint-disable prettier/prettier */
 import styled from "styled-components/native";
 import { FlatList } from "react-native";
 
 export const RestaurantList = styled(FlatList).attrs({
-    contentContainerStyle: {
-        padding: 16,
-    },
+  contentContainerStyle: {
+    padding: 16,
+  },
 })``;

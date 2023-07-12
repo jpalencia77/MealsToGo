@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import React, { useContext, useState } from "react";
 import { TouchableOpacity } from "react-native";
 import styled from "styled-components/native";

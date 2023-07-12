@@ -1,6 +1,5 @@
-/* eslint-disable prettier/prettier */
 import React, { useContext, useState, useEffect } from "react";
-import MapView, { Callout, Marker } from "react-native-maps";
+import MapView from "react-native-maps";
 import styled from "styled-components/native";
 
 import { LocationContext } from "../../../services/location/location.context";
@@ -15,54 +14,54 @@ const Map = styled(MapView)`
 `;
 
 export const MapScreen = ({ navigation }) => {
-    const { location } = useContext(LocationContext);
-    const { restaurants = [] } = useContext(RestaurantsContext);
+  const { location } = useContext(LocationContext);
+  const { restaurants = [] } = useContext(RestaurantsContext);
 
-    const [latDelta, setLatDelta] = useState(0);
+  const [latDelta, setLatDelta] = useState(0);
 
-    const { lat, lng, viewport } = location;
+  const { lat, lng, viewport } = location;
 
-    useEffect(() => {
-        const northeastLat = viewport.northeast.lat;
-        const southwestLat = viewport.southwest.lat;
+  useEffect(() => {
+    const northeastLat = viewport.northeast.lat;
+    const southwestLat = viewport.southwest.lat;
 
-        setLatDelta(northeastLat - southwestLat);
-    }, [location, viewport]);
+    setLatDelta(northeastLat - southwestLat);
+  }, [location, viewport]);
 
-    return (
-        <>
-            <Search />
-            <Map
-                region={{
-                    latitude: lat,
-                    longitude: lng,
-                    latitudeDelta: latDelta,
-                    longitudeDelta: 0.01,
-                }}
+  return (
+    <>
+      <Search />
+      <Map
+        region={{
+          latitude: lat,
+          longitude: lng,
+          latitudeDelta: latDelta,
+          longitudeDelta: 0.02,
+        }}
+      >
+        {restaurants.map((restaurant) => {
+          return (
+            <MapView.Marker
+              key={restaurant.name}
+              title={restaurant.name}
+              coordinate={{
+                latitude: restaurant.geometry.location.lat,
+                longitude: restaurant.geometry.location.lng,
+              }}
             >
-                {restaurants.map((restaurant) => {
-                    return (
-                        <Marker
-                            key={restaurant.name}
-                            title={restaurant.name}
-                            coordinate={{
-                                latitude: restaurant.geometry.location.lat,
-                                longitude: restaurant.geometry.location.lng,
-                            }}
-                        >
-                            <Callout
-                                onPress={() =>
-                                    navigation.navigate("RestaurantDetail", {
-                                        restaurant,
-                                    })
-                                }
-                            >
-                                <MapCallout restaurant={restaurant} />
-                            </Callout>
-                        </Marker>
-                    );
-                })}
-            </Map>
-        </>
-    );
+              <MapView.Callout
+                onPress={() =>
+                  navigation.navigate("RestaurantDetail", {
+                    restaurant,
+                  })
+                }
+              >
+                <MapCallout restaurant={restaurant} />
+              </MapView.Callout>
+            </MapView.Marker>
+          );
+        })}
+      </Map>
+    </>
+  );
 };

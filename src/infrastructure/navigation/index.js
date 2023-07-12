@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import React, { useContext } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 

@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import styled from "styled-components/native";
 import { Button, TextInput } from "react-native-paper";
 import { colors } from "../../../infrastructure/theme/colors";
